@@ -1,0 +1,44 @@
+fuel_cost = 3.59
+
+class Player():
+
+    def __init__(self,):
+        self.health = 100
+        self.wallet = 0
+        self.inventory = []
+
+
+class Vehicle():
+
+    def __init__(self, make, model, max_speed, max_fuel,):
+        self.make = make
+        self.model = model
+        self.speed = 0
+        self.max_speed = max_speed
+        self.fuel = 0.0
+        self.max_fuel = max_fuel
+        self.fuel_missing = (self.max_fuel -self.fuel)
+
+    def refuel(self, amount):
+        gallons_to_add = amount/fuel_cost
+        if player.wallet >= amount:
+            if self.fuel_missing >= gallons_to_add:
+                self.fuel += gallons_to_add
+                player.wallet -= amount
+            elif self.fuel_missing < gallons_to_add:
+                message = 'I cannot add that much, let\'s recalculate'
+                return message
+        elif player.wallet < amount:
+            message = 'I do not have enough money...sad day...'
+            return message
+
+    def fuelLevel(self):
+        message = 'The fuel is missing ' + str(self.fuel_missing) + ' gallons.'
+        return message
+
+    def costToFill(self):
+        fill_cost = self.fuel_missing * fuel_cost
+        message = 'It will cost ' + str(fill_cost) + ' to fill the tank.'
+        return message
+
+prius =  Vehicle('Toyota', 'Prius', 110, 8)
